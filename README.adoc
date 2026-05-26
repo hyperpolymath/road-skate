@@ -1,94 +1,61 @@
-= AffineScript-Vite
+// SPDX-License-Identifier: MPL-2.0
+// SPDX-FileCopyrightText: 2024-2026 Jonathan D.A. Jewell (hyperpolymath) <j.d.a.jewell@open.ac.uk>
+= road-skate
 :toc: macro
 :toclevels: 3
 :icons: font
 
-image:https://img.shields.io/badge/License-AGPL--3.0-blue.svg[License: AGPL-3.0]
-image:https://img.shields.io/badge/CRG-C-yellow.svg?style=flat-square[Component Readiness Grade: C,link="https://github.com/hyperpolymath/standards/tree/main/component-readiness-grades"]
-image:https://img.shields.io/badge/Vite-Plugin-orange.svg[Vite Plugin]
-image:https://img.shields.io/badge/Language-AffineScript-red.svg[AffineScript]
+image:https://img.shields.io/badge/License-MPL--2.0-blue.svg[License: MPL-2.0]
+image:https://img.shields.io/badge/Language-AffineScript-red.svg[AffineScript,link="https://github.com/hyperpolymath/affinescript"]
+image:https://img.shields.io/badge/Status-Prototype-orange.svg[Prototype]
 
-**Bring the power of AffineScript to your Vite-powered frontend.**
+A retro driving game written in link:https://github.com/hyperpolymath/affinescript[AffineScript].
 
-AffineScript-Vite is the official Vite plugin for integrating link:https://github.com/hyperpolymath/nextgen-languages/tree/main/affinescript[AffineScript] into your web applications. It handles the compilation of `.as` and `.affine` files into optimized WebAssembly and JavaScript, enabling near-instant Hot Module Replacement (HMR) for your game logic.
+In spirit of Accolade's _Test Drive III: The Passion_ (1990) — perspective-projected
+road rendering, centripetal-force steering model, and the kind of physics that makes
+a car feel like it has weight.
 
-== Why AffineScript with Vite?
+toc::[]
 
-Vite provides the fastest developer experience for the web. AffineScript provides the most correct developer experience for game logic. Together, they enable a "Fast & Safe" workflow:
+== Status
 
-* ✅ **Near-Instant HMR**: Changes to your `.as` files are compiled and reloaded in milliseconds.
-* ✅ **Type-Safe Frontend**: Catch protocol bugs, resource leaks, and invalid state transitions before they hit the browser.
-* ✅ **Optimized WASM**: Leverage AffineScript's native WASM backend for high-performance game loops.
-* ✅ **Zero Configuration**: Sensible defaults for the hyperpolymath ecosystem (Gossamer, Burble).
+Prototype. The pieces that exist:
 
-== Installation
+* `road_render*.affine` — perspective-projection road renderer (multiple iterations;
+  current target is `road_render.affine`).
+* `physics_example.affine` — centripetal-force steering / car-state physics.
+* `game/` — minimal browser host (`index.html`, `main.as`).
+
+Not yet game-shaped: no input handling, no track definition, no audio. The
+renderer + physics are the working substrate.
+
+== Build
+
+You'll need the AffineScript compiler
+(link:https://github.com/hyperpolymath/affinescript[hyperpolymath/affinescript])
+installed.
 
 [source,bash]
 ----
-# Using Deno (Recommended)
-deno add npm:affinescript-vite
-
-# Using Bun
-bun add affinescript-vite
-
-# Using NPM
-npm install affinescript-vite
+just check     # type-check
+just build     # compile to WASM
+just run       # exercise physics_example.affine
 ----
 
-== Usage
+The `Justfile` is the entry point.
 
-Add the plugin to your `vite.config.js`:
+== History
 
-[source,javascript]
-----
-import { defineConfig } from 'vite';
-import affinePlugin from 'affinescript-vite';
-
-export default defineConfig({
-  plugins: [
-    affinePlugin({
-      // Optional: path to your affinescript compiler binary
-      compilerPath: 'affinescript'
-    })
-  ]
-});
-----
-
-Then import your AffineScript files directly in your JavaScript or ReScript:
-
-[source,javascript]
-----
-import gameLogic from './logic.as';
-
-// gameLogic is now available as a WASM module or JS bridge
-gameLogic.init();
-----
-
-== Configuration Options
-
-[cols="1,1,2"]
-|===
-|Option |Default |Description
-
-|`compilerPath`
-|`'affinescript'`
-|The path to the AffineScript compiler executable.
-
-|`wasm`
-|`true`
-|Whether to compile to WebAssembly (true) or JavaScript (false).
-
-|`strict`
-|`true`
-|Enforce strict affine and quantity checks during dev.
-|===
+Extracted from `hyperpolymath/affinescript` (where it had been embedded under
+`road-skate/` since the 2026-04-22 ecosystem consolidation) as its own repo on
+2026-05-26. Pre-extraction history is preserved on this branch via
+`git subtree split`.
 
 == License
 
-This project is licensed under **AGPL-3.0-or-later**.
+MPL-2.0. See link:LICENSE[LICENSE].
 
-== See Also
+== Related
 
-* link:ROADMAP.adoc[Roadmap]
-* link:https://github.com/hyperpolymath/nextgen-languages/tree/main/affinescript[AffineScript Language]
-* link:https://github.com/hyperpolymath/gossamer[Gossamer Desktop Shell]
+* link:https://github.com/hyperpolymath/affinescript[AffineScript] — the language road-skate is written in.
+* link:https://github.com/hyperpolymath/developer-ecosystem[developer-ecosystem] — the broader hyperpolymath ecosystem.
