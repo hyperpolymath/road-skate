@@ -3,11 +3,11 @@
 # See: https://github.com/hyperpolymath/gv-clade-index
 
 [identity]
-uuid = "a5ea1382-a34c-5334-8a46-a2ebe904c810"
+uuid = "dbbed1d1-5b1f-5d0e-a5f5-186cae320b86"
 primary-forge = "github"
 primary-owner = "hyperpolymath"
-canonical-name = "rsr-template-repo"
-prefixed-name = "rm-rsr-template-repo"
+canonical-name = "road-skate"
+prefixed-name = "rm-road-skate"
 
 [clade]
 primary = "rm"
@@ -16,9 +16,9 @@ assigned = "2026-03-16"
 rationale = ""
 
 [forges]
-github = "hyperpolymath/rsr-template-repo"
-gitlab = "hyperpolymath/rsr-template-repo"
-bitbucket = "hyperpolymath/rsr-template-repo"
+github = "hyperpolymath/road-skate"
+gitlab = "hyperpolymath/road-skate"
+bitbucket = "hyperpolymath/road-skate"
 
 [lineage]
 type = "standalone"
